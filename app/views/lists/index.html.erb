@@ -1,0 +1,12 @@
+<h1>Grocery List</h1>
+<p>Add an item to your list by typing below:</p>
+
+<%= form_for :list do |l| %>
+  <%= l.text_field :name %>
+  <%= l.submit "Add" %>
+<% end %>
+
+<% @all_lists = List.all %>
+<% @all_lists.each do |l| %>
+  <%= l.name %>
+<% end %>
