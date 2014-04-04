@@ -6,7 +6,7 @@
   <%= l.submit "Add" %>
 <% end %>
 
-<% @all_lists = List.all %>
-<% @all_lists.each do |l| %>
-  <%= l.name %>
+<h3> Items: </h3><br />
+<% @lists.each do |l| %>
+<%= l.name %><br />
 <% end %>
