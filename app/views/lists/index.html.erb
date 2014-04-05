@@ -6,7 +6,12 @@
   <%= l.submit "Add" %>
 <% end %>
 
-<h3> Items: </h3><br />
-<% @lists.each do |l| %>
-<%= l.name %><br />
-<% end %>
+<h3> Items: </h3>
+<table>
+  <% @lists.each do |list| %>
+  <tr><ul>
+    <td style="padding: 8px"><li><%= list.name %> <%= link_to 'delete', list, :method => :delete %><br /></li></td>
+    </ul></tr>
+  <% end %>
+</table>
+

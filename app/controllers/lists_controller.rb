@@ -5,19 +5,22 @@ class ListsController < ApplicationController
   def new
     @lists = List.new
   end
+  def show
+    redirect_to root_path
+  end
   def create
     @lists = List.new(list_params)
     if @lists.save
-      redirect_to root_path, alert: "Successfully Created"
+      redirect_to root_path, alert: "Successfully added item to your list. "
     else
       render 'new'
     end
   end
   def destroy
-    @lists = List.find(params[:id])
-    @lists.destroy
+    test = List.find(params[:id])
+    test.destroy
 
-    redirect_to root_path
+    redirect_to list_path, alert: "Item deleted." 
   end
   
   private
