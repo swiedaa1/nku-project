@@ -1,17 +1,19 @@
-<h1>Grocery List</h1>
-<p>Add an item to your list by typing below:</p>
+<div class="container"><div class="jumbotron">
+  <h1><u>Grocery List</u></h1>
+  <p>Add an item to your list by typing below:</p>
 
-<%= form_for :list do |l| %>
-  <%= l.text_field :name %>
-  <%= l.submit "Add" %>
-<% end %>
-
-<h3> Items: </h3>
-<table>
-  <% @lists.each do |list| %>
-  <tr><ul>
-    <td style="padding: 8px"><li><%= list.name %> <%= link_to 'delete', list, :method => :delete %><br /></li></td>
-    </ul></tr>
+  <%= form_for :list do |l| %>
+    <%= l.text_field :name %>
+    <%= l.submit "Add" %>
   <% end %>
-</table>
-<p>Would you like to save this list and access it privately? <%= link_to 'Sign up', new_user_path %> today!</p>
+
+  <h3> Items: </h3>
+  <table>
+    <% @lists.each do |list| %>
+    <tr><ul>
+      <td style="padding: 8px"><li><%= list.name %> <%= link_to 'delete', list, :method => :delete %><br /></li></td>
+      </ul></tr>
+    <% end %>
+  </table>
+  <p>Would you like to save this list and access it privately? <%= link_to 'Sign up', new_user_path %> today!</p>
+  </div></div>

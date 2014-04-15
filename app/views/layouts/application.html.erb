@@ -7,12 +7,22 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  Todo: Login | Logout <!-- sessions to be implemented -->
+  <nav class="navbar navbar-default container" role="navigation">
+    <div class="navbar-header">
+      <% if current_user %>
+        Hello, <%= current_user.name %>! | <%= link_to 'Logout', logout_path %> 
+      <% else %>
+        Hello, Guest! Login to manage your list | <%= link_to 'Login', "login" %> | <%= link_to 'Sign Up', new_user_path %>
+      <% end %>
+    </div>
+  </nav>
+  <br /> 
+
   <% flash.each do |key, value| %>
     <div class="alert alert-<%= key %>"><%= value %></div>
   <% end %>
 
-<%= yield %>
+  <%= yield %>
 
 </body>
 </html>
