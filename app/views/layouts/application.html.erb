@@ -8,21 +8,31 @@
 </head>
 <body>
   <nav class="navbar navbar-default container" role="navigation">
-    <div class="navbar-header">
-      <% if current_user %>
-        Hello, <%= current_user.name %>! | <%= link_to 'Logout', logout_path %> 
-      <% else %>
-        Hello, Guest! Login to manage your list | <%= link_to 'Login', "login" %> | <%= link_to 'Sign Up', new_user_path %>
-      <% end %>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav ">
+        <% if current_user %>
+          <br />Welcome <%= current_user.name %>!
+        <% else %>
+          <br />Welcome Guest! Sign in to view your saved lists.
+        <% end %>
+      </ul>
+      <div class="nav navbar-nav navbar-right">
+        <div class="btn-group">
+          <% if current_user %>
+            <%= link_to "Sign out", 'logout', :class => "btn btn-default navbar-btn" %>
+          <% else %>
+            <%= link_to "Sign Up!", new_user_path, :class => "btn btn-default navbar-btn" %>
+            <%= link_to "Sign In!", new_session_path, :class => "btn btn-default navbar-btn" %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </nav>
-  <br /> 
+  <div class="container">
 
-  <% flash.each do |key, value| %>
-    <div class="alert alert-<%= key %>"><%= value %></div>
-  <% end %>
+    <%= render partial: "layouts/info_stuff", flash: flash %> 
 
-  <%= yield %>
-
+    <%= yield %>
+  </div>
 </body>
 </html>

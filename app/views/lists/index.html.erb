@@ -4,9 +4,12 @@
 
   <%= form_for :list do |l| %>
     <%= l.text_field :name %>
-    <%= l.submit "Add" %>
+    <%= l.submit "Add" %>  
+  
   <% end %>
-
+  <p>Would you like to save this list and access it privately? <%= link_to 'Sign up', new_user_path %> today!</p>
+</div></div>
+<div class="container"><div class="jumbotron">
   <h3> Items: </h3>
   <table>
     <% @lists.each do |list| %>
@@ -15,5 +18,5 @@
       </ul></tr>
     <% end %>
   </table>
-  <p>Would you like to save this list and access it privately? <%= link_to 'Sign up', new_user_path %> today!</p>
+
   </div></div>
