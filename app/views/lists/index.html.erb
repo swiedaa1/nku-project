@@ -1,22 +1,23 @@
-<div class="container"><div class="jumbotron">
-  <h1><u>Grocery List</u></h1>
-  <p>Add an item to your list by typing below:</p>
+  <h2>Grocery List</h2>
+  <div class="well"><p>Add an item to your list by typing below:</p>
 
-  <%= form_for :list do |l| %>
-    <%= l.text_field :name %>
-    <%= l.submit "Add" %>  
+    <%= form_for :list do |l| %>
+      <%= l.text_field :name %>
+      <%= l.submit "Add" %>  
+  </div>
   
   <% end %>
-  <p>Would you like to save this list and access it privately? <%= link_to 'Sign up', new_user_path %> today!</p>
-</div></div>
-<div class="container"><div class="jumbotron">
+</div><!-- Ends the layout's main div to create whitespace below -->
+<div class="jumbotron">
   <h3> Items: </h3>
   <table>
     <% @lists.each do |list| %>
     <tr><ul>
-      <td style="padding: 8px"><li><%= list.name %> <%= link_to 'delete', list, :method => :delete %><br /></li></td>
+      <td style="padding: 8px"><li><%= list.name %> <%= link_to 'delete', list, :method => :delete %></li></td>
       </ul></tr>
     <% end %>
   </table>
-
-  </div></div>
+</div>
+<div class="well">
+    <p>Would you like to save this list and access it privately? <%= link_to 'Sign up', new_user_path %> today!</p>
+<!-- No ending div because its closed in the layout -->
