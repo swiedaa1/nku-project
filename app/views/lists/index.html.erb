@@ -1,21 +1,67 @@
   <h2>Grocery List</h2>
   <div class="well"><p>Add an item to your list by typing below:</p>
-
     <%= form_for :list do |l| %>
-      <%= l.text_field :name %>
-      <%= l.submit "Add" %>  
+    <%= l.label :name, :class => 'span12 input-large search-query' %>
+      <%= l.text_field :name, :class => 'span21 input-large'  %><br />
+      <%= l.label :category %>
+      <%= l.select(:category, @category)%>
+      <br />
+      <%= l.submit "Add", :class => 'btn btn-primary' %>  
   </div>
   
   <% end %>
 </div><!-- Ends the layout's main div to create whitespace below -->
 <div class="jumbotron">
-  <h3> Items: </h3>
-  <table>
-    <% @lists.each do |list| %>
-    <tr><ul>
-      <td style="padding: 8px"><li><%= list.name %> <%= link_to 'delete', list, :method => :delete %></li></td>
-      </ul></tr>
-    <% end %>
+
+  <table  cellspacing="1" width="500px" style="height: 200px" cellpadding="2" border="1">
+  <tr>
+    <th>Produce</th>
+    <th>Meat</th>
+    <th>Frozen</th>
+    <th>Deli</th>
+  </tr>
+  <tr>
+    <td><% @lists.each do |list| %>
+        <% if list.category == "Produce" %>      
+          <%= list.name %><%= link_to '[x]', list, :method => :delete %><br />
+        <% end %><% end %></td>
+    <td><% @lists.each do |list| %>
+        <% if list.category == "Meat" %>      
+          <%= list.name %><%= link_to '[x]', list, :method => :delete %><br />
+        <% end %><% end %></td>
+    <td><% @lists.each do |list| %>
+        <% if list.category == "Frozen" %>      
+          <%= list.name %><%= link_to '[x]', list, :method => :delete %><br />
+        <% end %><% end %></td>
+    <td><% @lists.each do |list| %>
+        <% if list.category == "Deli" %>      
+          <%= list.name %><%= link_to '[x]', list, :method => :delete %><br />
+        <% end %><% end %></td>
+  </tr>
+  <tr>
+    <th>Pet</th>
+    <th>Cleaning</th>
+    <th>Dairy</th>
+    <th>Pantry</th>
+  </tr>
+  <tr>
+    <td><% @lists.each do |list| %>
+        <% if list.category == "Pet" %>      
+          <%= list.name %><%= link_to '[x]', list, :method => :delete %><br />
+        <% end %><% end %></td>
+    <td><% @lists.each do |list| %>
+        <% if list.category == "Cleaning" %>      
+          <%= list.name %><%= link_to '[x]', list, :method => :delete %><br />
+        <% end %><% end %></td>
+    <td><% @lists.each do |list| %>
+        <% if list.category == "Dairy" %>      
+          <%= list.name %><%= link_to '[x]', list, :method => :delete %><br />
+        <% end %><% end %></td>
+    <td><% @lists.each do |list| %>
+        <% if list.category == "Pantry" %>      
+          <%= list.name %><%= link_to '[x]', list, :method => :delete %><br />
+        <% end %><% end %></td>
+  </tr>
   </table>
 </div>
 <div class="well">
