@@ -21,22 +21,34 @@
     <th>Deli</th>
   </tr>
   <tr>
-    <td><% @lists.each do |list| %>
+    <td>
+      <% @lists.each do |list| %>
         <% if list.category == "Produce" %>      
-          <%= list.name %><%= link_to '[x]', list, :method => :delete %><br />
-        <% end %><% end %></td>
-    <td><% @lists.each do |list| %>
+          <%= list.name %> <%= link_to '[x]', list, :method => :delete %><br />
+        <% end %>
+      <% end %>
+    </td>
+    <td>
+      <% @lists.each do |list| %>
         <% if list.category == "Meat" %>      
-          <%= list.name %><%= link_to '[x]', list, :method => :delete %><br />
-        <% end %><% end %></td>
-    <td><% @lists.each do |list| %>
+          <%= list.name %> <%= link_to '[x]', list, :method => :delete %><br />
+        <% end %>
+      <% end %>
+    </td>
+    <td>
+      <% @lists.each do |list| %>
         <% if list.category == "Frozen" %>      
-          <%= list.name %><%= link_to '[x]', list, :method => :delete %><br />
-        <% end %><% end %></td>
-    <td><% @lists.each do |list| %>
+          <%= list.name %> <%= link_to '[x]', list, :method => :delete %><br />
+        <% end %>
+      <% end %>
+    </td>
+    <td>
+      <% @lists.each do |list| %>
         <% if list.category == "Deli" %>      
-          <%= list.name %><%= link_to '[x]', list, :method => :delete %><br />
-        <% end %><% end %></td>
+          <%= list.name %> <%= link_to '[x]', list, :method => :delete %><br />
+        <% end %>
+      <% end %>
+    </td>
   </tr>
   <tr>
     <th>Pet</th>
@@ -45,22 +57,34 @@
     <th>Pantry</th>
   </tr>
   <tr>
-    <td><% @lists.each do |list| %>
+    <td>
+      <% @lists.each do |list| %>
         <% if list.category == "Pet" %>      
-          <%= list.name %><%= link_to '[x]', list, :method => :delete %><br />
-        <% end %><% end %></td>
-    <td><% @lists.each do |list| %>
+          <%= list.name %> <%= link_to '[x]', list, :method => :delete %><br />
+        <% end %>
+      <% end %>
+    </td>
+    <td>
+      <% @lists.each do |list| %>
         <% if list.category == "Cleaning" %>      
-          <%= list.name %><%= link_to '[x]', list, :method => :delete %><br />
-        <% end %><% end %></td>
-    <td><% @lists.each do |list| %>
+          <%= list.name %> <%= link_to '[x]', list, :method => :delete %><br />
+        <% end %>
+      <% end %>
+    </td>
+    <td>
+      <% @lists.each do |list| %>
         <% if list.category == "Dairy" %>      
-          <%= list.name %><%= link_to '[x]', list, :method => :delete %><br />
-        <% end %><% end %></td>
-    <td><% @lists.each do |list| %>
+          <%= list.name %> <%= link_to '[x]', list, :method => :delete %><br />
+        <% end %>
+      <% end %>
+    </td>
+    <td>
+      <% @lists.each do |list| %>
         <% if list.category == "Pantry" %>      
-          <%= list.name %><%= link_to '[x]', list, :method => :delete %><br />
-        <% end %><% end %></td>
+          <%= list.name %> <%= link_to '[x]', list, :method => :delete %><br />
+        <% end %>
+      <% end %>
+    </td>
   </tr>
   </table>
 </div>
