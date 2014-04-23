@@ -1,6 +1,6 @@
 NkuProject::Application.routes.draw do
 
-  resources :lists
+  resources :items
   resources :users
   resources :sessions
   controller :sessions do
@@ -8,5 +8,5 @@ NkuProject::Application.routes.draw do
     post 'login' => :create
     get 'logout' => :destroy
   end
-  root 'lists#index'
+  root 'items#index'
 end
