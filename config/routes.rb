@@ -1,6 +1,9 @@
 NkuProject::Application.routes.draw do
 
+  get "categories/index"
+  get "categories/show"
   resources :items
+  resources :categories
   resources :users
   resources :sessions
   controller :sessions do
