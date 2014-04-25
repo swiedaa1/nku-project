@@ -1,10 +1,7 @@
 class ItemsController < ApplicationController
   def index
     @items = Item.all
-    @categories = Category.all
-    @category_array = Category.all.to_a 
-    @name_array = [] 
-    @category_array.each { |s| @name_array.push(s.name) }
+    @category = ['Meat', 'Frozen', 'Deli', 'Pet', 'Cleaning', 'Dairy', 'Produce', 'Pantry']
   end
   def new
     @items = Item.new
