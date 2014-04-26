@@ -40,7 +40,7 @@ As a user,
 I want to be able to signup to create my own shopping list that other people can't see or edit.
 ```
 
-Testing steps:
+Testing steps (4-25):
 
 1. Click the 'Sign Up' button in the upper right corner.
 2. Enter the information required.
