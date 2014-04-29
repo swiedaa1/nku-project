@@ -13,7 +13,11 @@ class ItemsController < ApplicationController
   def create
     @current = current_user
     @items = Item.new(item_params)
+    @items.name = @items.name.titleize
     @items.user_id = @current.id
+    if @items.price == nil # Make sure price isn't blank
+      @items.price = '0.00'
+    end
     if @items.save
       redirect_to root_path, alert: "Successfully added item to your list. "
     else
@@ -23,8 +27,8 @@ class ItemsController < ApplicationController
   def destroy
     doomed_item = Item.find(params[:id])
     doomed_item.destroy
-
-    redirect_to root_path, alert: "Item deleted." 
+    
+    redirect_to items_path, alert: "Successfully removed item from your list. "
   end
   
   private
