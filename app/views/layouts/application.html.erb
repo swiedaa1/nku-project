@@ -3,7 +3,7 @@
 <head>
   <title>NkuProject - Grocery list</title>
   <%= stylesheet_link_tag    "application", media: "all" %>
-  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag 'jquery', 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -31,7 +31,7 @@
   <div class="container">
     <%= render partial: "layouts/info_stuff" %>
     
-    <div class="jumbotron">
+    <div class="well">
       <%= yield %>
     </div>
   </div>

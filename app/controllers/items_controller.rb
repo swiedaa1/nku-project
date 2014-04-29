@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
+  helper_method :sort_column, :sort_direction 
   def index
-    @items = Item.all
+    @items = Item.order(sort_column + ' ' + sort_direction)
     @category = ['Meat', 'Frozen', 'Deli', 'Pet', 'Cleaning', 'Dairy', 'Produce', 'Pantry']
   end
   def new
@@ -28,7 +29,13 @@ class ItemsController < ApplicationController
   
   private
   def item_params
-    params.require(:item).permit(:category, :name, :user_id)
+    params.require(:item).permit(:category, :name, :price, :user_id)
   end
+  def sort_column  
+    params[:sort] || "name"  # Make this more secure by checking for values
+  end   
+  def sort_direction  
+    params[:direction] || "asc"  # Make this more secure by checking for values
+  end  
 end
 

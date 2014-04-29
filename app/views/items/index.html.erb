@@ -4,7 +4,9 @@
       <div class="span8">
         <%= form_for :item do |item| %>
           <%= item.label :name, :class => 'span8 input-large search-query' %>
-          <%= item.text_field :name, :class => 'span8 input-large'  %><br />
+          <%= item.text_field :name, :class => 'span8 input-large'  %>
+          <%= item.label :price, :class => 'span8 input-large search-query' %>
+          <%= item.text_field :price, :class => 'span8 input-large'  %><br />
           <%= item.label :category %>
           <%= item.select(:category, @category)%>
           <br />
@@ -14,83 +16,55 @@
       </div>
     </div>
   </div><!-- Ends the layout's main div to create whitespace below -->
-  <div class="jumbotron">
+  <div class="well">
     <% @current = current_user %>
-    <table class="table table-striped table-bordered table-condensed">
-    <tr>
-      <th>Produce</th>
-      <th>Meat</th>
-      <th>Frozen</th>
-      <th>Deli</th>
-    </tr>
-    <tr>
-      <td>
-        <% @items.each do |item| %>
-          <% if item.category == "Produce" && item.user_id == @current.id %>      
-            <%= item.name %> <%= link_to '[x]', item, :method => :delete %><br />
-          <% end %>
-        <% end %>
-      </td>
-      <td>
-        <% @items.each do |item| %>
-          <% if item.category == "Meat" && item.user_id == @current.id %>      
-            <%= item.name %> <%= link_to '[x]', item, :method => :delete %><br />
-          <% end %>
-        <% end %>
-      </td>
-      <td>
-        <% @items.each do |item| %>
-          <% if item.category == "Frozen" && item.user_id == @current.id %>      
-            <%= item.name %> <%= link_to '[x]', item, :method => :delete %><br />
-          <% end %>
-        <% end %>
-      </td>
-      <td>
-        <% @items.each do |item| %>
-          <% if item.category == "Deli" && item.user_id == @current.id %>      
-            <%= item.name %> <%= link_to '[x]', item, :method => :delete %><br />
-          <% end %>
-        <% end %>
-      </td>
-    </tr>
-    <tr>
-      <th>Pet</th>
-      <th>Cleaning</th>
-      <th>Dairy</th>
-      <th>Pantry</th>
-    </tr>
-    <tr>
-      <td>
-        <% @items.each do |item| %>
-          <% if item.category == "Pet" && item.user_id == @current.id %>      
-            <%= item.name %> <%= link_to '[x]', item, :method => :delete %><br />
-          <% end %>
-        <% end %>
-      </td>
-      <td>
-        <% @items.each do |item| %>
-          <% if item.category == "Cleaning" && item.user_id == @current.id %>      
-            <%= item.name %> <%= link_to '[x]', item, :method => :delete %><br />
-          <% end %>
-        <% end %>
-      </td>
-      <td>
-        <% @items.each do |item| %>
-          <% if item.category == "Dairy" && item.user_id == @current.id %>      
-            <%= item.name %> <%= link_to '[x]', item, :method => :delete %><br />
-          <% end %>
-        <% end %>
-      </td>
-      <td>
-        <% @items.each do |item| %>
-          <% if item.category == "Pantry" && item.user_id == @current.id %>      
-            <%= item.name %> <%= link_to '[x]', item, :method => :delete %><br />
-          <% end %>
-        <% end %>
-      </td>
-    </tr>
-    </table>
+   
+    
+    
+    
+    
+    
+    
+    <div class="container">
+    <h3>Click the search icon <small>(<i class="glyphicon glyphicon-search"></i>)</small> to search</h3>
+    	<div class="row">
+			<div class="col-md-10">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h3 class="panel-title">Items</h3>
+						<div class="pull-right">
+							<span class="clickable filter" data-toggle="tooltip" title="Toggle table filter" data-container="body">
+								<i class="glyphicon glyphicon-search"></i>
+							</span>
+						</div>
+					</div>
+					<div class="panel-body">
+						<input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#item-table" placeholder="Filter Items" />
+					</div>
+					<table class="table table-hover" id="item-table">
+						<thead>
+							<tr>
+								<th><%= sortable "Name" %></th>  
+                <th><%= sortable "Price" %></th> 
+                <th><%= sortable "Category" %></th>
+                <th>Remove</th>
+							</tr>
+						</thead>
+						<tbody>
+							 <% for item in @items %>  
+                  <tr>  
+                    <td><%= item.name %></td>  
+                    <td><%= number_to_currency(item.price, :unit => "$") %></td>
+                    <td><%= item.category %></td> 
+                    <td><%= link_to '[x]', item, :method => :delete %></td>
+                  </tr>  
+              <% end %>
+						</tbody>
+					</table>
+				</div>
+			</div>
+	</div>
   <% else %>
-    <h2> Please sign in to create a list </h2>
+    <h3> Please sign in to create a list </h3>
   <% end %>
 <!-- No ending div because its closed in the layout -->
