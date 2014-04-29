@@ -26,7 +26,9 @@
     
     
     <div class="container">
-    <h3>Click the search icon <small>(<i class="glyphicon glyphicon-search"></i>)</small> to search</h3>
+      <h4>Click the search icon <small>(<i class="glyphicon glyphicon-search"></i>)</small> to search</h4><br />
+      Or, sort by name, price, or category by clicking the row at the top.<br />
+      You can also click an item name to search RedPlum.com for coupons!
     	<div class="row">
 			<div class="col-md-10">
 				<div class="panel panel-primary">
@@ -53,7 +55,7 @@
 						<tbody>
 							 <% for item in @items %>  
                   <tr>  
-                    <td><%= item.name %></td>  
+                    <td><%= link_to item.name, 'http://www.redplum.com/search/index.html?key=' + item.name, :target => "_blank" %></td>  
                     <td><%= number_to_currency(item.price, :unit => "$") %></td>
                     <td><%= item.category %></td> 
                     <td><%= link_to '[x]', item, :method => :delete %></td>
