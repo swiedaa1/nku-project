@@ -21,7 +21,8 @@ class ItemsController < ApplicationController
     if @items.save
       redirect_to root_path, alert: "Successfully added item to your list. "
     else
-      render 'new'
+      flash[:error] = "Item creation failed."
+      redirect_to root_path
     end
   end
   def destroy
