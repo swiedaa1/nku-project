@@ -2,7 +2,8 @@ class ItemsController < ApplicationController
   helper_method :sort_column, :sort_direction 
   def index
     @items = Item.order(sort_column + ' ' + sort_direction)
-    @category = ['Meat', 'Frozen', 'Deli', 'Pet', 'Cleaning', 'Dairy', 'Produce', 'Pantry']
+    @category = ['Meat & Seafood', 'Frozen', 'Deli', 'Pet', 'Household', 'Dairy', 'Produce', 'Pantry',
+      'Health & Beauty', 'Entertainment', 'Seasonal', 'Baby', 'Bakery', 'Miscellaneous'].sort
   end
   def new
     @items = Item.new
@@ -21,7 +22,7 @@ class ItemsController < ApplicationController
     if @items.save
       redirect_to root_path, notice: "Successfully added item to your list. "
     else
-      redirect_to root_path, alert: "Item creation failed. Make sure the price field is a number."
+      redirect_to root_path, alert: "Item creation failed. Invalid item name or price is not a number."
     end
   end
   def destroy

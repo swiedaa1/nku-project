@@ -1,4 +1,5 @@
 @import 'bootstrap';
+@import "bootstrap/glyphicons";
 @import url("//fonts.googleapis.com/css?family=Lato:400,700,400italic");/*!
  * Bootswatch v3.1.1+1
  * Homepage: http://bootswatch.com
@@ -25,4 +26,10 @@
 
 .panel-body {
   display: none;
+}
+#flash {
+  display: none;
+}
+.flash-bar {
+  height: 75px;
 }

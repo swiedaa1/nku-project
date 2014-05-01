@@ -1,8 +1,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
-$('.delete_item').bind('ajax:success', function() {
-    $(this).closest('tr').fadeOut();
+$(function() {
+   $('#flash').delay(250).fadeIn('normal', function() {
+      $(this).delay(3500).fadeOut('slow');
+   });
 });
 (function(){
     'use strict';

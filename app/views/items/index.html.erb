@@ -45,17 +45,19 @@
                   <th>Remove</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody><% @total = 0 %>
                  <% for item in @items %>
                    <% if item.user_id == @current.id %>  
                     <tr>  
                       <td><%= link_to item.name, 'http://www.redplum.com/search/index.html?key=' + item.name, :target => "_blank" %></td>  
-                      <td><%= number_to_currency(item.price, :unit => "$") %></td>
+                      <td><%= number_to_currency(item.price, :unit => "$") %><% @total += item.price %></td>
                       <td><%= item.category %></td> 
                       <td><%= link_to '[x]', item, :method => :delete %></td>
                     </tr>  
                   <% end %>
+                
                 <% end %>
+                <p>Estimated total cost before tax: <%= number_to_currency(@total, :unit => "$") %></p>
               </tbody>
             </table>
           </div>
