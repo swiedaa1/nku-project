@@ -1,6 +1,6 @@
   <h2>Grocery Items</h2>
   <% if current_user %>
-    <div class="well"><p>Add an item to your item by typing below:</p>
+    <div class="well"><p>Add an item to your shopping list by typing below:</p>
       <div class="span8">
         <%= form_for :item do |item| %>
           <%= item.label :name, :class => 'span8 input-large search-query' %>
@@ -22,46 +22,46 @@
         <h4>Click the search icon <small>(<i class="glyphicon glyphicon-search"></i>)</small> to search</h4><br />
         Or, sort by name, price, or category by clicking the row at the top.<br />
         You can also click an item name to search RedPlum.com for coupons!
-        <div class="row">
-        <div class="col-md-10">
-          <div class="panel panel-primary">
-            <div class="panel-heading">
-              <h3 class="panel-title">Items</h3>
-              <div class="pull-right">
-                <span class="clickable filter" data-toggle="tooltip" title="Toggle table filter" data-container="body">
-                  <i class="glyphicon glyphicon-search"></i>
-                </span>
+          <div class="row">
+           <div class="col-md-10">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h3 class="panel-title">Items</h3>
+                 <div class="pull-right">
+                  <span class="clickable filter" data-toggle="tooltip" title="Toggle table filter" data-container="body">
+                    <i class="glyphicon glyphicon-search"></i>
+                  </span>
+                </div>
               </div>
-            </div>
-            <div class="panel-body">
-              <input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#item-table" placeholder="Filter Items" />
-            </div>
-            <table class="table table-hover" id="item-table">
-              <thead>
-                <tr>
-                  <th><%= sortable "Name" %></th>  
-                  <th><%= sortable "Price" %></th> 
-                  <th><%= sortable "Category" %></th>
-                  <th>Remove</th>
-                </tr>
-              </thead>
-              <tbody><% @total = 0 %>
-                 <% for item in @items %>
-                   <% if item.user_id == @current.id %>  
-                    <tr>  
-                      <td><%= link_to item.name, 'http://www.redplum.com/search/index.html?key=' + item.name, :target => "_blank" %></td>  
-                      <td><%= number_to_currency(item.price, :unit => "$") %><% @total += item.price %></td>
-                      <td><%= item.category %></td> 
-                      <td><%= link_to '[x]', item, :method => :delete %></td>
-                    </tr>  
+              <div class="panel-body">
+                <input type="text" class="form-control" id="item-table-filter" data-action="filter" data-filters="#item-table" placeholder="Filter Items" />
+              </div>
+              <table class="table table-hover" id="item-table">
+                <thead>
+                  <tr>
+                    <th><%= sortable "Name" %></th>  
+                    <th><%= sortable "Price" %></th> 
+                    <th><%= sortable "Category" %></th>
+                    <th>Remove</th>
+                  </tr>
+                </thead>
+                <tbody><% @total = 0 %>
+                   <% for item in @items %>
+                     <% if item.user_id == @current.id %>  
+                      <tr>  
+                        <td><%= link_to item.name, 'http://www.redplum.com/search/index.html?key=' + item.name, :target => "_blank" %></td>  
+                        <td><%= number_to_currency(item.price, :unit => "$") %><% @total += item.price %></td>
+                        <td><%= item.category %></td> 
+                        <td><%= link_to item, :method => :delete do %>
+                              <i class="glyphicon glyphicon-trash"></i><% end %></td>
+                      </tr>  
+                    <% end %>
                   <% end %>
-                
-                <% end %>
-                <p>Estimated total cost before tax: <%= number_to_currency(@total, :unit => "$") %></p>
-              </tbody>
-            </table>
+                  <p>Estimated total cost before tax: <%= number_to_currency(@total, :unit => "$") %></p>
+                </tbody>
+              </table>
+             </div>
           </div>
-        </div>
       </div>
   <% else %>
     <h3> Please sign in to create a list </h3>

@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     @users = User.new(user_params)
     if @users.save
       session[:user_id] = @users.id
-      redirect_to root_path, alert: "Successfully Created User"
+      redirect_to root_path, notice: "Successfully Created User"
     else
       render 'new'
     end
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
   def update
     @users = User.find(params[:id])
     if @users.update(user_params)
-      redirect_to root_path, alert: "Successfully updated User"
+      redirect_to root_path, notice: "Successfully updated User"
     else
       render 'edit'
     end

@@ -43,4 +43,3 @@ class ItemsController < ApplicationController
     params[:direction] || "asc"  # Make this more secure by checking for values
   end  
 end
-
