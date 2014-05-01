@@ -19,17 +19,16 @@ class ItemsController < ApplicationController
       @items.price = '0.00'
     end
     if @items.save
-      redirect_to root_path, alert: "Successfully added item to your list. "
+      redirect_to root_path, notice: "Successfully added item to your list. "
     else
-      flash[:error] = "Item creation failed."
-      redirect_to root_path
+      redirect_to root_path, alert: "Item creation failed. Make sure the price field is a number."
     end
   end
   def destroy
     doomed_item = Item.find(params[:id])
     doomed_item.destroy
     
-    redirect_to items_path, alert: "Successfully removed item from your list. "
+    redirect_to items_path, notice: "Successfully removed item from your list. "
   end
   
   private
